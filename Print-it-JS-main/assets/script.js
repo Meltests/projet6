@@ -19,42 +19,40 @@ const slides = [
 
 //Bullet point//
   const dotsContainer = document.querySelector('.dots'); //appeler la classe de mes dots//
-
   function createDot() {
 slides.forEach((_, index) => { //j'appele les slides de mon tableau pour y attribuer un dot à chacune// 
 	const dot = document.createElement('span'); //je creer sur mon html des span pour chaque dots//
   dot.classList.add('dot'); //propriétées appliquées à mes dots"
-  dotsContainer.appendChild(dot); //je creer l'element enfant dans l'element parent dotscontainer//
-  if (index == 2) {
-  dot.classList.add('dot_selected'); // à modifier car non fonctionnel : provisoir//
-} //le dot de la page sera remplis car c'est celui selectionné// 
+  dotsContainer.appendChild(dot); //je creer l'element enfant dans l'element parent dotscontainer// 
 });
 }
 
 createDot();
 
 
+
 //Evenement click sur fléche slider//
-document.querySelector('.arrow_left').addEventListener('click', () => {
+document.querySelector('.arrow_left').addEventListener('click', () => { 
+  const currentdot = document.querySelectorAll('.dots .dot');
+    currentdot[currentIndex].classList.remove('dot_selected');
   if (currentIndex > 0) {
     currentIndex--; // -- pour l'ordre antichronologique//
   } else {
     currentIndex = slides.length - 1; //slide lenght pour calculer nombre d'element dans l'index// 
   }
+   currentdot[currentIndex].classList.add('dot_selected');
   updateSlide(currentIndex);
   console.log("Flèche gauche cliquée");
 });
 
 document.querySelector('.arrow_right').addEventListener('click', () => {
   const currentdot = document.querySelectorAll('.dots .dot');
-  currentdot[currentIndex].classList.remove('.dot_selected');
+  currentdot[currentIndex].classList.remove('dot_selected');
   currentIndex++; //ici ++ pour avancer dans le tableau index en ordre chronologique// 
   if (currentIndex > slides.length - 1) {
      currentIndex = 0;    
   } 
-  currentdot[currentIndex].classList.add('.dot_selected');
-  
-  
+  currentdot[currentIndex].classList.add('dot_selected');  
   updateSlide(currentIndex);
   console.log("Flèche droite cliquée");
 });
