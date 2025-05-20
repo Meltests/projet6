@@ -20,14 +20,14 @@ const slides = [
 //Bullet point//
   const dotsContainer = document.querySelector('.dots'); //appeler la classe de mes dots//
   
-  function createDot() {
-slides.forEach((_, index) => { //j'appele les slides de mon tableau pour y attribuer un dot à chacune// 
-	const dot = document.createElement('span'); //je creer sur mon html des span pour chaque dots//
-  dot.classList.add('dot'); //propriétées appliquées à mes dots"
-  dotsContainer.appendChild(dot); //je creer l'element enfant dans l'element parent dotscontainer// 
-});
- document.querySelectorAll('.dots .dot')[0].classList.add('dot_selected');
-}
+function createDot() {
+  slides.forEach((_, index) => { //j'appele les slides de mon tableau pour y attribuer un dot à chacune// 
+	  const dot = document.createElement('span'); //je creer sur mon html des span pour chaque dots//
+    dot.classList.add('dot'); //propriétées appliquées à mes dots"
+    dotsContainer.appendChild(dot); //je creer l'element enfant dans l'element parent dotscontainer// 
+  });
+  document.querySelectorAll('.dots .dot')[0].classList.add('dot_selected');
+} 
 createDot();
 
 
@@ -82,5 +82,5 @@ function updateSlide(index) { //elements qui vont changer au changement de slide
   const slide = slides[index];
   bannerImg.src = `./assets/images/slideshow/${slide.image}`; //chemin de la nouvelle image//
   bannerImg.alt = `Image slide ${index + 1}`; //texte associé à nouvelle image//
-  bannerText.innerHTML = slide.tagLine; //tagline de la slide//
+  bannerText.innerHTML = slide.tagLine; //tagline de la slide texte ou html//
 }
